@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "tbjjOwGy+bj+nU/AeeTmY3oMb/28mc/UlYM3/bhvD+bRAWp9JXymvmry+mnpGj3UcsfolBX44x6DxqzVoxSCXg==",
+  "dgSpecHash": "iDRosArQn24d4vAwY1roB8dorrxAUk8c5R+kxtzn/utYn431fxjmEZMdA8Id1I8VhOV5dlQJfV07y8NThIFyRA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dawson\\source\\repos\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj",
+  "projectFilePath": "C:\\Users\\Dawson\\CMPS339-PROJECT\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Dawson\\.nuget\\packages\\dapper\\2.0.143\\dapper.2.0.143.nupkg.sha512",
     "C:\\Users\\Dawson\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\6.0.15\\microsoft.aspnetcore.spaproxy.6.0.15.nupkg.sha512"
   ],
   "logs": []
