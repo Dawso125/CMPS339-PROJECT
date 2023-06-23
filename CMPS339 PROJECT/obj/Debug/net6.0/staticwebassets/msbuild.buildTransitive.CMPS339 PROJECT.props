@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\CMPS339 PROJECT.props" />
+</Project>

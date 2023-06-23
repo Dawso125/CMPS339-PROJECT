@@ -1,11 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "tbjjOwGy+bj+nU/AeeTmY3oMb/28mc/UlYM3/bhvD+bRAWp9JXymvmry+mnpGj3UcsfolBX44x6DxqzVoxSCXg==",
+  "dgSpecHash": "jwZrMlPWB8wg3HbcNxjIH+mvjHYusx9c1w9mz3O9qKxdyAXNW7Kd7R4/cr5Ak+Ww38SML9vWPsbMJQ53daUnow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dawson\\source\\repos\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj",
+  "projectFilePath": "C:\\Users\\Dawson\\CMPS339-PROJECT\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Dawson\\.nuget\\packages\\dapper\\2.0.143\\dapper.2.0.143.nupkg.sha512",
-    "C:\\Users\\Dawson\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\6.0.15\\microsoft.aspnetcore.spaproxy.6.0.15.nupkg.sha512"
+    "C:\\Users\\Dawson\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\7.0.8\\microsoft.aspnetcore.spaproxy.7.0.8.nupkg.sha512",
+    "C:\\Users\\Dawson\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Dawson\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Dawson\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\Dawson\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Dawson\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Dawson\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
   ],
   "logs": []
 }

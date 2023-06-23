@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -21,6 +21,17 @@ app.UseRouting();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+    options.DocumentTitle = "My Swagger";
+}
+    
+
+
+);
 
 app.MapFallbackToFile("index.html"); ;
 

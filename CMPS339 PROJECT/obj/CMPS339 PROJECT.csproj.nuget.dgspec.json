@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dawson\\source\\repos\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj": {}
+    "C:\\Users\\Dawson\\CMPS339-PROJECT\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dawson\\source\\repos\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj": {
+    "C:\\Users\\Dawson\\CMPS339-PROJECT\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dawson\\source\\repos\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj",
+        "projectUniqueName": "C:\\Users\\Dawson\\CMPS339-PROJECT\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj",
         "projectName": "CMPS339 PROJECT",
-        "projectPath": "C:\\Users\\Dawson\\source\\repos\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj",
+        "projectPath": "C:\\Users\\Dawson\\CMPS339-PROJECT\\CMPS339 PROJECT\\CMPS339 PROJECT.csproj",
         "packagesPath": "C:\\Users\\Dawson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dawson\\source\\repos\\CMPS339 PROJECT\\obj\\",
+        "outputPath": "C:\\Users\\Dawson\\CMPS339-PROJECT\\CMPS339 PROJECT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dawson\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,13 +40,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Dapper": {
-              "target": "Package",
-              "version": "[2.0.143, )"
-            },
             "Microsoft.AspNetCore.SpaProxy": {
               "target": "Package",
-              "version": "[6.0.15, )"
+              "version": "[7.0.8, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
