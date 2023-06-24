@@ -6,6 +6,8 @@ namespace CMPS339_PROJECT.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+
+        // this is a test branch
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
