@@ -1,5 +1,5 @@
-﻿using CMPS339.Models;
-using CMPS339.Services.Interfaces;
+﻿using CMPS339_PROJECT.Models;
+using CMPS339_PROJECT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMPS339.Controllers
