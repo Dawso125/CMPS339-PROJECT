@@ -1,5 +1,5 @@
-﻿using CMPS339.Models;
-using CMPS339.Services.Interfaces;
+﻿using CMPS339_PROJECT.Models;
+using CMPS339_PROJECT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMPS339.Controllers
@@ -34,5 +34,23 @@ namespace CMPS339.Controllers
             }
             return NotFound();
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(ParksCreateDto dto)
+        {
+            if (ModelState.IsValid)
+            {
+                ParksGetDto? park = await _amusementParkService.InsertAsync(dto);
+                if (park != null)
+                {
+                    return Ok(park);
+                }
+                return BadRequest("Unable to Insert Record.");
+            }
+            return BadRequest("Model is invalid");
+
+
+        }
+
     }
 }

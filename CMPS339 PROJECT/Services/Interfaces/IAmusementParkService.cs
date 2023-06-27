@@ -1,5 +1,4 @@
 ﻿using CMPS339_PROJECT.Models;
-using CMPS339_PROJECT.Models;
 
 namespace CMPS339_PROJECT.Services.Interfaces
 {
@@ -7,5 +6,6 @@ namespace CMPS339_PROJECT.Services.Interfaces
     {
         Task<List<Parks>> GetAllAsync();
         Task<Parks?> GetByIdAsync(int id);
+        Task<ParksGetDto?> InsertAsync(ParksCreateDto parksCreateDto);
     }
 }
