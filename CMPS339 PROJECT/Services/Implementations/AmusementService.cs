@@ -1,6 +1,5 @@
 ﻿using CMPS339_PROJECT.Models;
 using CMPS339_PROJECT.Services.Interfaces;
-using CMPS339_PROJECT.Models;
 using Dapper;
 using System.Data;
 using System.Data.Common;
