@@ -280,3 +280,6 @@ FakesAssemblies/
 
 # GhostDoc plugin setting file
 *.GhostDoc.xml
+CMPS339 PROJECT/.vs
+CMPS339 PROJECT/bin
+CMPS339 PROJECT/obj
