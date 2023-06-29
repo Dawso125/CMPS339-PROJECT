@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddScoped<IAmusementParkService, AmusementService>();
 
 var app = builder.Build();
