@@ -26,7 +26,7 @@ To install and run this project locally, please follow these steps:
 Clone this repository to your local machine using the following command:
 bash
 Copy code
-git clone https://github.com/your-username/amusement-parks-database.git
+https://github.com/Dawso125/CMPS339-PROJECT.git
 Open the project in your preferred integrated development environment (IDE), such as Visual Studio or JetBrains Rider.
 Build the solution to restore dependencies and compile the code.
 Usage
