@@ -283,3 +283,4 @@ FakesAssemblies/
 CMPS339 PROJECT/.vs
 CMPS339 PROJECT/bin
 CMPS339 PROJECT/obj
+CMPS339 PROJECT/Services/ConnectionService.cs
