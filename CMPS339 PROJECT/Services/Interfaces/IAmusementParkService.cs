@@ -1,5 +1,4 @@
 ﻿using CMPS339_PROJECT.Models;
-using CMPS339_PROJECT.Models;
 
 namespace CMPS339_PROJECT.Services.Interfaces
 {
