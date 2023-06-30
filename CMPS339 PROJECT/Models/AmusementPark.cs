@@ -11,6 +11,16 @@ namespace CMPS339_PROJECT.Models
         [MaxLength(30)]
         public string Name { get; set; }
     }
+    public class ParksDto
+    {
+        public int Id { get; set; }
+
+        [Required]
+        [MaxLength(30)]
+        public string Name { get; set; }
+    }
+
+    
     public class ParksGetDto
     {
         public int Id { get; set; }
