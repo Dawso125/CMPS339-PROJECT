@@ -1,6 +1,10 @@
 using CMPS339_PROJECT.Services.Implementations;
 using CMPS339_PROJECT.Services.Interfaces;
+using Microsoft.AspNetCore.SpaServices;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
-
-
 builder.Services.AddScoped<IAmusementParkService, AmusementService>();
 
 var app = builder.Build();
@@ -41,6 +43,13 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); ;
+app.MapFallbackToFile("index.html");
+app.UseStaticFiles(); // Serve static files from the wwwroot folder
+
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();
