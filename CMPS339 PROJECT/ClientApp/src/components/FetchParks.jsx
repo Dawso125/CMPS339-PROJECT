@@ -5,7 +5,7 @@ function FetchParks() {
     const [parks, setParks] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/amusement-parks")
+        axios.get("https://localhost:7056/api/amusement-parks")
             .then(res => {
                 console.log(res.data);
                 setParks(res.data);
