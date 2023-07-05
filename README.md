@@ -1,3 +1,5 @@
+DONT FORGET TO RUN THE BACKEND AND FRONT END OR IT NO WORK
+
 # CMPS339-PROJECT
 Amusement Parks Database
 Welcome to the Amusement Parks Database project! This repository contains a .NET application that demonstrates the functionality of a database management system for managing amusement park data. With this application, you can easily create, read, update, and delete records related to various amusement parks.
