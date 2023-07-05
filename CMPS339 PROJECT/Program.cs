@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IAmusementParkService, AmusementService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,10 +21,17 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseCors(builder =>
+{
+    builder.WithOrigins("http://localhost:3000", "https://localhost:3000", "http://localhost:3000/")
+           .AllowAnyMethod()
+           .AllowAnyHeader()
+           .AllowCredentials();
+});
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -36,7 +44,7 @@ app.UseSwaggerUI(options =>
     options.RoutePrefix = string.Empty;
 });
 
-
+app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
