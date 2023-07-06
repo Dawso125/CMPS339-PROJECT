@@ -92,6 +92,7 @@ namespace CMPS339_PROJECT.Services.Implementations
                         {
                             // Map relevant properties from the deleted park to ParksGetDto
                             Id = park.Id,
+                            Name = park.Name,
                             // Add other properties as needed
                         };
                     } else
