@@ -1,6 +1,7 @@
 ﻿using CMPS339_PROJECT.Models;
 using CMPS339_PROJECT.Services.Interfaces;
 using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using System.Data;
 using System.Data.Common;
@@ -73,26 +74,36 @@ namespace CMPS339_PROJECT.Services.Implementations
             }
         }
 
-        public async Task<ParksDeleteDto?> DeleteByIdAsync(int id)
+        public async Task<ParksGetDto?> DeleteByIdAsync(int id)
         {
             try
             {
+                List<Parks> parks = new();
                 using (IDbConnection connection = new SqlConnection(ConnectionService.ConnectionString))
                 {
                     connection.Open();
-                    IEnumerable<Parks> newPark = await connection.QueryAsync<Parks>("DELETE * FROM Parks WHERE Id = @Id", new { Id = id });
-                    return newPark.Select(x => new ParksDeleteDto
+                    var park = await GetByIdAsync(id);
+                    if (park != null)
                     {
-                        Id = x.Id,
-                        Name = x.Name,
+                        var deleteQuery = "DELETE FROM Parks WHERE Id = @Id";
+                        await connection.QueryAsync(deleteQuery, new { Id = id }); // Execute the delete query
 
-                    }).FirstOrDefault();
-
+                        return new ParksGetDto // Return the deleted park information
+                        {
+                            // Map relevant properties from the deleted park to ParksGetDto
+                            Id = park.Id,
+                            // Add other properties as needed
+                        };
+                    } else
+                    {
+                        return null;
+                    }
                 }
             }
+
             catch (Exception e)
             {
-                _logger.LogError(e, "An error has occured. DTO Value Name: {NAME} AT: {TIME}", dto.Name, DateTime.Now.ToString());
+                _logger.LogError(e, "An error has occured. DTO Value Name: {NAME} AT: {TIME}");
                 return null;
 
             }

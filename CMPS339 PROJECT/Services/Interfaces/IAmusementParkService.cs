@@ -8,6 +8,6 @@ namespace CMPS339_PROJECT.Services.Interfaces
         Task<Parks?> GetByIdAsync(int id);
         Task<ParksGetDto?> InsertAsync(ParksCreateDto dto);
 
-        Task<ParksDeleteDto?> DeleteByIdAsync(int id);
+        Task<ParksGetDto?> DeleteByIdAsync(int id);
     }
 }
