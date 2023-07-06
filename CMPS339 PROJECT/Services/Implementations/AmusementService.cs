@@ -72,5 +72,30 @@ namespace CMPS339_PROJECT.Services.Implementations
             
             }
         }
+
+        public async Task<ParksDeleteDto?> DeleteByIdAsync(int id)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(ConnectionService.ConnectionString))
+                {
+                    connection.Open();
+                    IEnumerable<Parks> newPark = await connection.QueryAsync<Parks>("DELETE * FROM Parks WHERE Id = @Id", new { Id = id });
+                    return newPark.Select(x => new ParksDeleteDto
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+
+                    }).FirstOrDefault();
+
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error has occured. DTO Value Name: {NAME} AT: {TIME}", dto.Name, DateTime.Now.ToString());
+                return null;
+
+            }
+        }
     }
 }
