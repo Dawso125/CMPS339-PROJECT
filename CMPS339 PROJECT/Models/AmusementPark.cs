@@ -33,4 +33,10 @@ namespace CMPS339_PROJECT.Models
         [MaxLength(30)]
         public string Name { get; set; } = string.Empty;
     }
+
+    public class ParksDeleteDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+    }
 }
