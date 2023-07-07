@@ -7,5 +7,6 @@ namespace CMPS339_PROJECT.Services.Interfaces
         Task<List<Parks>> GetAllAsync();
         Task<Parks?> GetByIdAsync(int id);
         Task<ParksGetDto?> InsertAsync(ParksCreateDto dto);
+        Task UpdateAsync(int id, ParksCreateUpdateDto dto);
     }
 }
