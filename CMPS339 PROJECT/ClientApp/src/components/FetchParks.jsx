@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useTable } from "react-table";
 
-function FetchParks() {
+  function FetchParks() {
   const [parks, setParks] = useState([]);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ function FetchParks() {
 }
 
 export default FetchParks;
-
+// simple version of this with no table 
 //     useEffect(() => {
 //         axios.get("https://localhost:7056/api/amusement-parks")
 //             .then(res => {
