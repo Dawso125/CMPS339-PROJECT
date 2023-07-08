@@ -57,6 +57,20 @@ namespace CMPS339.Controllers
                 return BadRequest("Unable to insert the record");
             }
             return BadRequest("The model is invalid");
+
+        
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteById(int id)
+        {
+            ParksGetDto? park = await _amusementParkService.DeleteByIdAsync(id);
+
+            if (park != null)
+            {
+                return Ok(park);
+            }
+            return NotFound();
         }
 
         [HttpPut("{id}")]

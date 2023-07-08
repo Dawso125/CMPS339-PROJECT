@@ -34,6 +34,7 @@ namespace CMPS339_PROJECT.Models
         public string Name { get; set; } = string.Empty;
     }
 
+
     public class ParksCreateUpdateDto
     {
         [Required]
@@ -41,4 +42,5 @@ namespace CMPS339_PROJECT.Models
         public string Name { get; set; } = string.Empty;
        
     }
+    
 }

@@ -46,7 +46,7 @@ app.UseSwaggerUI(options =>
     options.RoutePrefix = string.Empty;
 });
 
-app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
@@ -55,6 +55,7 @@ app.MapFallbackToFile("index.html");
 app.UseStaticFiles(); // Serve static files from the wwwroot folder
 
 app.UseRouting();
+app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();

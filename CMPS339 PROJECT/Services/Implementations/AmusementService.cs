@@ -1,6 +1,7 @@
 ﻿using CMPS339_PROJECT.Models;
 using CMPS339_PROJECT.Services.Interfaces;
 using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
@@ -98,6 +99,42 @@ namespace CMPS339_PROJECT.Services.Implementations
             {
                 _logger.LogError(e, "An error has occurred. DTO Value Name: {NAME} AT: {TIME}", dto.Name, DateTime.Now.ToString());
                 return null;
+            }
+        }
+
+        public async Task<ParksGetDto?> DeleteByIdAsync(int id)
+        {
+            try
+            {
+                List<Parks> parks = new();
+                using (IDbConnection connection = new SqlConnection(ConnectionService.ConnectionString))
+                {
+                    connection.Open();
+                    var park = await GetByIdAsync(id);
+                    if (park != null)
+                    {
+                        var deleteQuery = "DELETE FROM Parks WHERE Id = @Id";
+                        await connection.QueryAsync(deleteQuery, new { Id = id }); // Execute the delete query
+
+                        return new ParksGetDto // Return the deleted park information
+                        {
+                            // Map relevant properties from the deleted park to ParksGetDto
+                            Id = park.Id,
+                            Name = park.Name,
+                            // Add other properties as needed
+                        };
+                    } else
+                    {
+                        return null;
+                    }
+                }
+            }
+
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error has occured. DTO Value Name: {NAME} AT: {TIME}");
+                return null;
+
             }
         }
     }
