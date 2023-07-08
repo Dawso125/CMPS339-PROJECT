@@ -3,9 +3,14 @@ using CMPS339_PROJECT.Services.Interfaces;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace CMPS339_PROJECT.Services.Implementations
 {
@@ -13,6 +18,7 @@ namespace CMPS339_PROJECT.Services.Implementations
     {
         private readonly ILogger<AmusementService> _logger;
         private readonly IMemoryCache _cache;
+
         public AmusementService(ILogger<AmusementService> logger, IMemoryCache cache)
         {
             _logger = logger;
@@ -64,13 +70,35 @@ namespace CMPS339_PROJECT.Services.Implementations
                         Name = x.Name,
 
                     }).FirstOrDefault();
-
                 }
-            } catch (Exception e) 
-            { 
-                _logger.LogError(e, "An error has occured. DTO Value Name: {NAME} AT: {TIME}", dto.Name, DateTime.Now.ToString());
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error has occurred. DTO Value Name: {NAME} AT: {TIME}", dto.Name, DateTime.Now.ToString());
                 return null;
-            
+            }
+        }
+
+        public async Task<ParksGetDto?> UpdateAsync(int id, ParksCreateUpdateDto dto)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(ConnectionService.ConnectionString))
+                {
+                    connection.Open();
+                    IEnumerable<Parks> updatedPark = await connection.QueryAsync<Parks>("UPDATE Parks SET Name = @Name WHERE Id = @Id; SELECT * FROM Parks WHERE Id = @Id", new { Name = dto.Name, Id = id });
+                    return updatedPark.Select(x => new ParksGetDto
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+
+                    }).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error has occurred. DTO Value Name: {NAME} AT: {TIME}", dto.Name, DateTime.Now.ToString());
+                return null;
             }
         }
 

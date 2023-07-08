@@ -72,7 +72,36 @@ namespace CMPS339.Controllers
             }
             return NotFound();
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(int id, [FromBody] ParksCreateUpdateDto dto)
+        {
+            var parkToEdit = await _amusementParkService.GetByIdAsync(id);
+
+            if (parkToEdit != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var updatedPark = await _amusementParkService.UpdateAsync(id, dto);
+
+                    if (updatedPark != null)
+                    {
+                        var parkGetDto = new ParksGetDto
+                        {
+                            Id = updatedPark.Id,
+                            Name = updatedPark.Name,
+                        };
+
+                        return Ok(parkGetDto);
+                    }
+
+                    return BadRequest("Unable to update the park.");
+                }
+
+                return BadRequest("The model is invalid.");
+            }
+
+            return NotFound("Could not find park to update.");
+        }
     }
 }
-    
-
