@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import FetchParks from './FetchParks';
+import React, { Component } from "react";
+import SearchParks from "./SearchParks";
+import "./Home.css"
 
 export class Home extends Component {
   static displayName = Home.name;
 
   render() {
     return (
-      <div>
-        <h1>
-          <input type="text" name="TextBox" id="TextField" placeholder='Search Parks Here!'/>
-        </h1>
-        this da home page
-        <h2>
-          <FetchParks/>
-          </h2>
-        
+      <div className="Home-Container">
+        <div className="Home-Center">
+          <h1>Find Parks</h1>
+          <div className="SearchParks-Container">
+            <SearchParks />
+          </div>
+        </div>
       </div>
     );
   }
