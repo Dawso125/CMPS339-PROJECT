@@ -11,7 +11,7 @@ namespace CMPS339_PROJECT.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
     public class UsersDto
     {
@@ -22,7 +22,7 @@ namespace CMPS339_PROJECT.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 
 
@@ -32,7 +32,7 @@ namespace CMPS339_PROJECT.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 
     public class UserssCreateDto
@@ -42,7 +42,7 @@ namespace CMPS339_PROJECT.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 
 
@@ -53,7 +53,7 @@ namespace CMPS339_PROJECT.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; }
 
     }
 
