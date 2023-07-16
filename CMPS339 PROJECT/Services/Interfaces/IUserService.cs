@@ -2,7 +2,7 @@
 
 namespace CMPS339_PROJECT.Services.Interfaces
 {
-    public class IUserService
+    public interface IUserService
     { 
             Task<List<Users>> GetAllAsync();
             Task<Users?> GetByIdAsync(int id);
