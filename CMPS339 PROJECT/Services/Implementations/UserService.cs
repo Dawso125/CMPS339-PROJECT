@@ -83,7 +83,7 @@ namespace CMPS339_PROJECT.Services.Implementations
             }
         }
 
-        public async Task<UsersGetDto?> UpdateAsync(int UsersCreateUpdateDto dto)
+        public async Task<UsersGetDto?> UpdateAsync(int id, UsersCreateUpdateDto dto)
         {
             try
             {
@@ -118,8 +118,8 @@ namespace CMPS339_PROJECT.Services.Implementations
                 using (IDbConnection connection = new SqlConnection(ConnectionService.ConnectionString))
                 {
                     connection.Open();
-                    var Users = await GetByIdAsync(id);
-                    if (Users != null)
+                    var User = await GetByIdAsync(id);
+                    if (User != null)
                     {
                         var deleteQuery = "DELETE FROM Users WHERE Id = @Id";
                         await connection.QueryAsync(deleteQuery, new { Id = id }); // Execute the delete query
@@ -127,10 +127,10 @@ namespace CMPS339_PROJECT.Services.Implementations
                         return new UsersGetDto // Return the deleted park information
                         {
                             // Map relevant properties from the deleted park to ParksGetDto
-                            Id = Users.Id,
-                            Username = Users.Username,
-                            Password = Users.Password,
-                            IsActive = Users.IsActive,
+                            Id = User.Id,
+                            Username = User.Username,
+                            Password = User.Password,
+                            IsActive = User.IsActive,
                             // Add other properties as needed
                         };
                     }

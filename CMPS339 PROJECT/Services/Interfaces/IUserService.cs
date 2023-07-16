@@ -9,7 +9,7 @@ namespace CMPS339_PROJECT.Services.Interfaces
             Task<UsersGetDto?> InsertAsync(UsersCreateDto dto);
             Task<UsersGetDto?> UpdateAsync(int id, UsersCreateUpdateDto dto);
             Task<UsersGetDto?> DeleteByIdAsync(int id);
-        }
+        
     }
 }
-}
+
