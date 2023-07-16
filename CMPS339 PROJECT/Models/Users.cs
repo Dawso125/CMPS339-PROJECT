@@ -35,7 +35,7 @@ namespace CMPS339_PROJECT.Models
         public bool IsActive { get; set; }
     }
 
-    public class UserssCreateDto
+    public class UsersCreateDto
     {
         [Required]
         [MaxLength(30)]

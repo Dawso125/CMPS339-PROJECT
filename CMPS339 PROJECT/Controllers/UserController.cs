@@ -89,7 +89,9 @@ namespace CMPS339.Controllers
                         var userGetDto = new UsersGetDto
                         {
                             Id = updatedUser.Id,
-                            Name = updatedUser.Name,
+                            Username = updatedUser.Username,
+                            Password = updatedUser.Password,
+                            IsActive = updatedUser.IsActive,
                         };
 
                         return Ok(userGetDto);
