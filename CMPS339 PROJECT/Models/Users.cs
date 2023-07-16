@@ -9,7 +9,7 @@ namespace CMPS339_PROJECT.Models
         [Required]
         [MaxLength(30)]
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string Passwords { get; set; }
 
         public bool IsActive { get; set; }
     }
@@ -20,7 +20,7 @@ namespace CMPS339_PROJECT.Models
         [Required]
         [MaxLength(30)]
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string Passwords { get; set; }
 
         public bool IsActive { get; set; }
     }
@@ -30,7 +30,7 @@ namespace CMPS339_PROJECT.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string Passwords { get; set; }
 
         public bool IsActive { get; set; }
     }
@@ -40,7 +40,7 @@ namespace CMPS339_PROJECT.Models
         [Required]
         [MaxLength(30)]
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string Passwords { get; set; }
 
         public bool IsActive { get; set; }
     }
@@ -51,7 +51,7 @@ namespace CMPS339_PROJECT.Models
         [Required]
         [MaxLength(30)]
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string Passwords { get; set; }
 
         public bool IsActive { get; set; }
 

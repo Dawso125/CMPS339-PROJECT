@@ -63,12 +63,12 @@ namespace CMPS339_PROJECT.Services.Implementations
                 using (IDbConnection connection = new SqlConnection(ConnectionService.ConnectionString))
                 {
                     connection.Open();
-                    IEnumerable<Users> newUser = await connection.QueryAsync<Users>("INSERT INTO USERS OUTPUT INSERTED.* VALUES (@Username, @Password, @IsActive)", new { Username = dto.Username, Password = dto.Password, IsActive = dto.IsActive });
+                    IEnumerable<Users> newUser = await connection.QueryAsync<Users>("INSERT INTO USERS OUTPUT INSERTED.* VALUES (@Username, @Password, @IsActive)", new { Username = dto.Username, Password = dto.Passwords, IsActive = dto.IsActive });
                     return newUser.Select(x => new UsersGetDto
                     {
                         Id = x.Id,
                         Username = x.Username,
-                        Password = x.Password,
+                        Passwords = x.Passwords,
                         IsActive = x.IsActive,
 
                     }).FirstOrDefault();
@@ -77,7 +77,7 @@ namespace CMPS339_PROJECT.Services.Implementations
             catch (Exception e)
             {
                 _logger.LogError(e, "An error has occurred. DTO Value Username: {USERNAME} AT: {TIME}", dto.Username, DateTime.Now.ToString());
-                _logger.LogError(e, "An error has occurred. DTO Value Password: {PASSWORD} AT: {TIME}", dto.Password, DateTime.Now.ToString());
+                _logger.LogError(e, "An error has occurred. DTO Value Password: {PASSWORD} AT: {TIME}", dto.Passwords, DateTime.Now.ToString());
                 _logger.LogError(e, "An error has occurred. DTO Value IsActive: {ISACTIVE} AT: {TIME}", dto.IsActive, DateTime.Now.ToString());
                 return null;
             }
@@ -90,12 +90,12 @@ namespace CMPS339_PROJECT.Services.Implementations
                 using (IDbConnection connection = new SqlConnection(ConnectionService.ConnectionString))
                 {
                     connection.Open();
-                    IEnumerable<Users> updatedUsers = await connection.QueryAsync<Users>("UPDATE Users SET Username = @Username WHERE Id = @Id; UPDATE Users SET Password = @Password WHERE Id = @Id; UPDATE Users SET IsActive = @IsActive WHERE Id = @Id; SELECT * FROM Users WHERE Id = @Id", new { Username = dto.Username, Password = dto.Password, IsActive = dto.IsActive, Id = id });
+                    IEnumerable<Users> updatedUsers = await connection.QueryAsync<Users>("UPDATE Users SET Username = @Username WHERE Id = @Id; UPDATE Users SET Passwords = @Passwords WHERE Id = @Id; UPDATE Users SET IsActive = @IsActive WHERE Id = @Id; SELECT * FROM Users WHERE Id = @Id", new { Username = dto.Username, Passwords = dto.Passwords, IsActive = dto.IsActive, Id = id });
                     return updatedUsers.Select(x => new UsersGetDto
                     {
                         Id = x.Id,
                         Username = x.Username,
-                        Password = x.Password,
+                        Passwords = x.Passwords,
                         IsActive = x.IsActive,
 
                     }).FirstOrDefault();
@@ -104,7 +104,7 @@ namespace CMPS339_PROJECT.Services.Implementations
             catch (Exception e)
             {
                 _logger.LogError(e, "An error has occurred. DTO Value Username {USERNAME} AT: {TIME}", dto.Username, DateTime.Now.ToString());
-                _logger.LogError(e, "An error has occurred. DTO Value Password: {PASSWORD} AT: {TIME}", dto.Password, DateTime.Now.ToString());
+                _logger.LogError(e, "An error has occurred. DTO Value Password: {PASSWORDS} AT: {TIME}", dto.Passwords, DateTime.Now.ToString());
                 _logger.LogError(e, "An error has occurred. DTO Value IsActive: {ISACTIVE} AT: {TIME}", dto.IsActive, DateTime.Now.ToString());
                 return null;
             }
@@ -129,7 +129,7 @@ namespace CMPS339_PROJECT.Services.Implementations
                             // Map relevant properties from the deleted park to ParksGetDto
                             Id = User.Id,
                             Username = User.Username,
-                            Password = User.Password,
+                            Passwords = User.Passwords,
                             IsActive = User.IsActive,
                             // Add other properties as needed
                         };

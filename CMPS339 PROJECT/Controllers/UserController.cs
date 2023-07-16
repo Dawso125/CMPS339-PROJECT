@@ -90,7 +90,7 @@ namespace CMPS339.Controllers
                         {
                             Id = updatedUser.Id,
                             Username = updatedUser.Username,
-                            Password = updatedUser.Password,
+                            Passwords = updatedUser.Passwords,
                             IsActive = updatedUser.IsActive,
                         };
 
