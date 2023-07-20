@@ -98,9 +98,9 @@ IF NOT EXISTS
 			CREATE TABLE [dbo].[Users]
 			(
 				Id INT PRIMARY KEY IDENTITY(1,1),
-				Username varchar not null,
-				Passwords varchar not null,
-				IsActive BIT,
+				Username varchar(60) not null,
+				Passwords varchar(60) not null,
+				IsActive BIT
 			);
 		PRINT('Users table created.')
 		END
