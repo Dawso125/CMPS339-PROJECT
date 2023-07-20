@@ -13,7 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAmusementParkService, AmusementService>();
+builder.Services.AddScoped<IAttractionsService, AttractionsService>();
 builder.Services.AddScoped<IUserService, UserService>();
+
 
 
 var app = builder.Build();
