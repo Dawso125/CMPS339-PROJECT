@@ -8,7 +8,7 @@ namespace CMPS339_PROJECT.Models
 
         [ForeignKey("AmusementPark")]
         public int ParkId { get; set; }
-        public Parks? Park { get; set; }
+        public string Park { get; set; }
     }
 
     public class AttractionDto
@@ -17,5 +17,12 @@ namespace CMPS339_PROJECT.Models
 
         [ForeignKey("AmusementPark")]
         public int ParkId { get; set;}
+        public string Park { get; internal set; }
+    }
+
+    public class AttractionCreateDto
+    {
+        [ForeignKey("AmusementPark")]
+        public int ParkId { get; set; }
     }
 }

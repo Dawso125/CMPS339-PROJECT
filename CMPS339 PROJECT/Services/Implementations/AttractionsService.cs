@@ -56,5 +56,41 @@ namespace CMPS339_PROJECT.Services.Implementations
 
         }
 
+        public async Task<AttractionDto?> InsertAsync(AttractionCreateDto dto)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(ConnectionService.ConnectionString))
+                {
+                    connection.Open();
+
+                    string sqlInsertQuery = "INSERT INTO ATTRACTIONS (ParkId) OUTPUT INSERTED.Id, INSERTED.ParkId VALUES (@ParkId)";
+                    string sqlFetchParkQuery = "SELECT Name FROM Parks WHERE Id = @ParkId";
+
+                    
+                    using (var multi = await connection.QueryMultipleAsync($"{sqlInsertQuery}; {sqlFetchParkQuery}", new { ParkId = dto.ParkId }))
+                    {
+                        
+                        Attraction newAttraction = await multi.ReadSingleAsync<Attraction>();
+
+                        string parkName = await multi.ReadSingleOrDefaultAsync<string>();
+
+                        return new AttractionDto
+                        {
+                            Id = newAttraction.Id,
+                            ParkId = newAttraction.ParkId,
+                            Park = parkName
+                        };
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error has occurred DTO Value ParkId: {PARKID}", dto.ParkId);
+                return null;
+            }
+        }
+
+
     }
 }

@@ -39,5 +39,21 @@ namespace CMPS339_PROJECT.Controllers
             return NotFound();
 
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(AttractionCreateDto dto)
+        {
+            if (ModelState.IsValid)
+            {
+                AttractionDto? attraction = await _attractionsService.InsertAsync(dto);
+
+                if (attraction != null)
+                {
+                    return Ok(attraction);
+                }
+                return BadRequest("Unable to insert the record.");
+            }
+            return BadRequest("The model is invalid.");
+        }
     }
 }
