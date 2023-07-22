@@ -5,10 +5,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { showNotification } from "@mantine/notifications";
 import { routes } from "../../routes";
 import { ParksCreateUpdateDto, ParksGetDto } from "../../constants/types";
-import { db } from "../../config/dapper"; // Assuming you have a Dapper database instance named 'db'
+import axios from "axios"; // Import Axios library
 
 export const GameConsoleUpdate = () => {
-    const [park, setPark] = useState<ParksGetDto | undefined>(undefined);
+  const [park, setPark] = useState<ParksGetDto | undefined>(undefined);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -18,46 +18,44 @@ export const GameConsoleUpdate = () => {
   });
 
   useEffect(() => {
-  fetchPark(); // Remove the extra curly braces here
+    fetchPark();
 
-  async function fetchPark() {
-    const response = await db.get<ParksGetDto>(
-      `/api/park/${id}`
-    );
+    async function fetchPark() {
+      try {
+        const response = await axios.get<ParksGetDto>(`/api/park/${id}`);
 
-    if (response.hasErrors) {
-      showNotification({ message: "Error finding park", color: "red" });
+        if (response.data) {
+          setPark(response.data);
+          mantineForm.setValues(response.data);
+          mantineForm.resetDirty();
+        } else {
+          showNotification({ message: "Error finding park", color: "red" });
+        }
+      } catch (error) {
+        showNotification({ message: "Error finding park", color: "red" });
+      }
     }
-
-    if (response.data) {
-      setPark(response.data);
-      mantineForm.setValues(response.data);
-      mantineForm.resetDirty();
-    }
-  }
-}, [id]);
-
+  }, [id]);
 
   const submitPark = async (values) => {
-    const response = await db.put<ParksGetDto>(
-      `/api/park/${id}`,
-      values
-    );
+    try {
+      const response = await axios.put<ParksGetDto>(`/api/park/${id}`, values);
 
-    if (response.hasErrors) {
-      const formErrors = response.errors.reduce((prev, curr) => {
-        Object.assign(prev, { [curr.property]: curr.message });
-        return prev;
-      }, {} );
-      mantineForm.setErrors(formErrors);
-    }
-
-    if (response.data) {
-      showNotification({
-        message: "Park successfully updated",
-        color: "green"
-      });
-      navigate(routes.ParksListing);
+      if (response.data) {
+        showNotification({
+          message: "Park successfully updated",
+          color: "green"
+        });
+        navigate(routes.ParksListing);
+      } else {
+        const formErrors = response.data.errors.reduce((prev, curr) => {
+          Object.assign(prev, { [curr.property]: curr.message });
+          return prev;
+        }, {});
+        mantineForm.setErrors(formErrors);
+      }
+    } catch (error) {
+      showNotification({ message: "Error updating park", color: "red" });
     }
   };
 
